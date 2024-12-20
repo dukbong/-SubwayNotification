@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: public-data
+
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+public_data:
+  key: 61506f78516a6b6d33366450524674
