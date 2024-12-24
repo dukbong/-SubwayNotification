@@ -1,5 +1,6 @@
 package study.main_server.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,10 +17,8 @@ public class SubWayController {
 
     @PostMapping("/subway")
     public void getSubWayInfo(@RequestParam("station") String station,
-                              @RequestBody UserInfo userInfo) {
-
+                              @RequestBody @Valid UserInfo userInfo) {
         subWayService.getSubWayInfo(station, userInfo);
-
     }
 
 }

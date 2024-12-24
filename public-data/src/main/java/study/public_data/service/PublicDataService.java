@@ -12,9 +12,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import study.public_data.dto.ApplyDto;
 import study.public_data.dto.PublicDataResponse;
-import study.public_data.dto.RealtimeArrival;
-
-import java.util.List;
 
 @Slf4j
 @Component
@@ -31,7 +28,9 @@ public class PublicDataService {
     public void getPublicData(String preSubway) {
         try {
             ApplyDto applyDto = mapper.readValue(preSubway, ApplyDto.class);
-            String url = "http://swopenapi.seoul.go.kr/api/subway/" + env.getProperty("public_data.key") + "/json/realtimeStationArrival/0/999/" + applyDto.getStatnNm();
+            String url = "http://swopenapi.seoul.go.kr/api/subway/" +
+                    env.getProperty("public_data.key") + "/json/realtimeStationArrival/0/999/" +
+                    applyDto.getStatnNm();
             WebClient webClient = webClientBuilder.baseUrl(url).build();
             Mono<String> result = webClient.get()
                     .uri(url)
